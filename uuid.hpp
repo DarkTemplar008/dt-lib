@@ -10,7 +10,7 @@ namespace util {
 
 inline
 std::string GenerateUUID() {
-	auto hex_to_char = [=](int val) -> char {
+	auto hex_to_char = [](int val) -> char {
 		switch(val) {
 			case 0:
 			case 1:
@@ -36,20 +36,20 @@ std::string GenerateUUID() {
 			case 15:
 				return 'F';
 		}
-		return ' ';
+		throw "don't do stupid thing!";
 	};
 
 	std::random_device rd;
-	char guid[32];
+	char uuid[32];
 	for ( int i = 0; i < 4; ++i) {
 		std::uint32_t rand_num = rd();
-		char* pos = guid + i*sizeof(int)*2;
+		char* pos = uuid + i*sizeof(int)*2;
 		for (int j = 0; j < sizeof(int)*2; ++j) {
 		       pos[j] = hex_to_char((rand_num >> (j*4))&0xf);
 		}	       
 	}
 
-	return std::string(guid, guid+32);
+	return std::string(uuid, uuid+32);
 }
 
 } 
