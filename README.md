@@ -6,3 +6,6 @@
 
 ## mem_fun
 去除对成员函数的参数个数限制
+
+## rc_string
+std::string共享内存，同时优化==比较性能
