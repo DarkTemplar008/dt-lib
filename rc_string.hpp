@@ -44,6 +44,7 @@ public:
 	String& operator=(String&& other) {
 		impl_ = other.impl_;
 		other.impl_.reset();
+        return *this;
 	}
 
 	String& operator=(const std::string& str) {
@@ -85,6 +86,23 @@ public:
 private:
 	std::shared_ptr<std::string> impl_;
 };
+
+String operator + (const String& first, const String& second) {
+    std::string result(first);
+    result += static_cast<std::string>(second);
+    return result;
+}
+
+String operator += (String& first, const String& second) {
+    first = first + second;
+    return first;
+}
+
+template <class OStream>
+OStream& operator << (OStream& os, const String& str) {
+    os << static_cast<std::string>(str);
+    return os;
+}
 
 }
 }
