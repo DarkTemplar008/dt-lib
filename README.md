@@ -9,3 +9,6 @@
 
 ## rc_string
 std::string共享内存，同时优化==比较性能
+
+## instance_counter
+对实例进行计数
