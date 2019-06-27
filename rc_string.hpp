@@ -93,7 +93,7 @@ String operator + (const String& first, const String& second) {
     return result;
 }
 
-String operator += (String& first, const String& second) {
+String& operator += (String& first, const String& second) {
     first = first + second;
     return first;
 }
