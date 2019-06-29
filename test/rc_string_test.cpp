@@ -20,6 +20,7 @@ int main(int argc, char* argv[]) {
 		if ( str[i%10] == str[(i+1)%10]) {
 			break;
 		}
+        bool test = str[i%10] != str[(i+1)%10];
 	}
 	std::cout << "begin:" << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now()-now).count() << std::endl;
 
@@ -28,6 +29,7 @@ int main(int argc, char* argv[]) {
 		if ( pstr[i%10] == pstr[(i+1)%10]) {
 			break;
 		}
+        bool test = pstr[i%10] != pstr[(i+1)%10];
 	}
 	std::cout << "end  :" << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now()-now).count() << std::endl;
 	return 0;

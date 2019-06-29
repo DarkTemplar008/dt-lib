@@ -36,18 +36,18 @@ public:
 		other.impl_.reset();
 	}
 
-	String& operator=(const String& other) {
+	String& operator = (const String& other) {
 		impl_ = other.impl_;
 		return *this;
 	}
 
-	String& operator=(String&& other) {
+	String& operator = (String&& other) {
 		impl_ = other.impl_;
 		other.impl_.reset();
         	return *this;
 	}
 
-	String& operator=(const std::string& str) {
+	String& operator = (const std::string& str) {
 		impl_ = std::make_shared<std::string>(str);
 		return *this;
 	}
@@ -72,7 +72,7 @@ public:
 		}
 		return false;
 	}
-	
+
 	bool operator != (const String& other) const {
 		if (impl_ == other.impl_) {
 			return false;
@@ -83,19 +83,19 @@ public:
 	bool operator == (const char* str) const {
 		return *impl_ == str;
 	}
-	
+
 	bool operator != (const char* str) const {
-		return !operator == （str）;
+		return !operator == (str);
 	}
-	
+
 	bool operator == (const std::string& str) const {
 		return *impl_ == str;
 	}
-	
+
 	bool operator != (const std::string& str) const {
 		return ! operator == (str);
 	}
-	
+
 	bool operator < (const String& other) const {
 		return *impl_ < *other.impl_;
 	}

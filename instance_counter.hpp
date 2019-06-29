@@ -45,8 +45,13 @@ public:
     }
 
     template <class U>
-    bool operator == (const InstanceCounter<U> other) const{
+    bool operator == (const InstanceCounter<U>& other) const {
         return InstanceName() == other.InstanceName() && id_ == other.id_;
+    }
+
+    template <class U>
+    bool operator != (const InstanceCounter<U>& other) const {
+        return ! operator == (other);
     }
 
 public:
