@@ -44,7 +44,7 @@ public:
 	String& operator=(String&& other) {
 		impl_ = other.impl_;
 		other.impl_.reset();
-        return *this;
+        	return *this;
 	}
 
 	String& operator=(const std::string& str) {
@@ -72,13 +72,30 @@ public:
 		}
 		return false;
 	}
+	
+	bool operator != (const String& other) const {
+		if (impl_ == other.impl_) {
+			return false;
+		}
+		return !operator == (other);
+	}
 
 	bool operator == (const char* str) const {
 		return *impl_ == str;
 	}
+	
+	bool operator != (const char* str) const {
+		return !operator == （str）;
+	}
+	
 	bool operator == (const std::string& str) const {
 		return *impl_ == str;
 	}
+	
+	bool operator != (const std::string& str) const {
+		return ! operator == (str);
+	}
+	
 	bool operator < (const String& other) const {
 		return *impl_ < *other.impl_;
 	}
